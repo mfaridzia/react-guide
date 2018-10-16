@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Section1</title>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+  
+  // class based component
+  class Counter extends React.Component {
+
+    // component state
+    constructor() {
+      super();
+
+      this.state = {
+        count: 0
+      };
+
+      // or using this for fix undefined setState
+      //this.handleSubtract = this.handleSubtract.bind(this);
+
+    }
+
+    // event handling
+    handleSubtract = () => {
+      // changing component state
+      this.setState({
+        count: this.state.count - 1
+      })
+    }
+
+    handleAdd = () => {
+      this.setState({
+        count: this.state.count + 1
+      })
+    }
+
+
+    render() {
+      // conditional rendering
+      let type = '';
+      if(this.state.count % 2 === 0) {
+        type = 'Current count is even';
+      } else {
+        type = 'Current count is odd';
+      }
+
+      return <div>
+        <h3> The current count is { this.state.count % 2 === 0 ? 'even' : 'odd' } </h3>
+        <h3> { type } </h3>
+
+        <button onClick={ this.handleSubtract }> - </button>
+        <span style={{ padding: '10px' }}> 
+          { this.state.count }
+        </span>
+        <button onClick={ this.handleAdd }> + </button>
+      </div>
+    }
+  }
+
+  const App = function() {
+    return <div>
+      <Counter />
+    </div>
+  }
+
+  ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>

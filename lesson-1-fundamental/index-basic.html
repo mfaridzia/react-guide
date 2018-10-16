@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Section1</title>
+  <style>
+    .clock {
+      color:rgb(42, 87, 87);
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<script type="text/babel">
+  //const Header = <h1> Hallo from reactjs </h1>
+  // const Header = React.createElement('h1', null, 'Hallo From ReactJS')
+
+  const HeaderDisplay = function() {
+    return <h2> Hello World! </h2>
+  }
+
+  // create simple component
+  const Clock = function(props) {
+    // do whatever you want...
+    console.log(props) // props
+
+    const date = new Date();
+    const thisYear = date.getFullYear();
+    //return <h2 style={{ fontSize: '30px' }}> Copyright: {thisYear} </h2>// inline style
+    return <h2 style={{ color: props.color }}> Copyright: {thisYear} </h2>
+  }
+  
+  const App = function() {
+    return <div>
+      <HeaderDisplay />
+      <Clock color="#ff00ff" />
+      <Clock color="#ff0000" />
+    </div>
+  }
+
+  ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>
